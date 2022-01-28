@@ -34,7 +34,7 @@
                 <div class="md:grid md:grid-cols-3 md:gap-5 mb-4">
                     <div class="md:col-span-1 flex justify-between self-center">
                         <div class="md:px-4 block w-full text-gray-500 sm:px-0 md:text-right">
-                            Password:
+                            Passphrase:
                         </div>
                     </div>
                     <div class="mt-2 md:mt-0 md:col-span-2">
