@@ -11,11 +11,11 @@
         <span class="px-1 text-gray-500">
             |
         </span>
-        <a href="#">Code</a>
+        <a href="https://github.com/ambitionphp/ClickViewBoom" target="_blank">Code</a>
         <span class="px-1 text-gray-500">
             |
         </span>
-        <a href="#">Issues</a>
+        <a href="https://github.com/ambitionphp/ClickViewBoom/issues" target="_blank">Issues</a>
     </div>
 
     <div class="text-center mt-2 text-xs">
