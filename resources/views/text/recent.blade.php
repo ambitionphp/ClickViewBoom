@@ -13,7 +13,7 @@
                 </p>
 
                 @foreach($texts AS $text)
-                    <div class="bg-gray-200 py-1 px-2 border text-xs rounded mb-3">
+                    <div class="bg-gray-200 p-2 border text-xs rounded mb-3">
                         <span class="font-semibold">
                             #<a href="{{ route('text.private', $text) }}">{{ $text->id }}</a>
                         </span>
