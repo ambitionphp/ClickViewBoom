@@ -7,7 +7,7 @@
                 <div class="mt-1 mb-2">
                     <input
                         wire:model.defer="passphrase"
-                        type="text"
+                        type="password"
                         class="
                                     form-control
                                     block
