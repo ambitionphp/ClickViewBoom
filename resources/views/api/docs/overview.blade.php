@@ -84,7 +84,7 @@
 
                 <div class="px-2 py-1 bg-yellow-500 rounded mb-1">
                     <code class="text-xs text-slate-900">
-                        {{ url('/api/user') }}
+                        {{ url('/api/v1/user') }}
                     </code>
                 </div>
 
@@ -99,7 +99,7 @@
 
                 <div class="p-2 bg-slate-900 rounded mb-2">
                     <code class="text-xs text-stone-100">
-                        curl --location --request GET '{{ url('/api/user') }}' --header 'Authorization: Bearer YOUR_API_KEY'
+                        curl --location --request GET '{{ url('/api/v1/user') }}' --header 'Authorization: Bearer YOUR_API_KEY'
                     </code>
                 </div>
 

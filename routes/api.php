@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum', 'ability:read', 'json.response'])->group(function() {
+Route::prefix('v1')->middleware(['auth:sanctum', 'ability:read', 'json.response'])->group(function() {
     Route::get('/user', [\App\Http\Controllers\ApiController::class, 'user']);
     Route::get('/recent', [\App\Http\Controllers\ApiController::class, 'recent']);
     Route::get('/secret/{text}', [\App\Http\Controllers\ApiController::class, 'secret']);
