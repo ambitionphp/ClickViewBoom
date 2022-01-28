@@ -4,33 +4,21 @@
 
     <div class="text-center text-xs">
         <a href="{{ route('about') }}">About</a>
-        <span class="px-1 text-gray-500">
-            |
-        </span>
+        <span class="px-1 text-gray-500">|</span>
         <a href="{{ route('docs.api') }}">API</a>
-        <span class="px-1 text-gray-500">
-            |
-        </span>
+        <span class="px-1 text-gray-500">|</span>
         <a href="https://github.com/ambitionphp/ClickViewBoom" target="_blank">Code</a>
-        <span class="px-1 text-gray-500">
-            |
-        </span>
+        <span class="px-1 text-gray-500">|</span>
         <a href="https://github.com/ambitionphp/ClickViewBoom/issues" target="_blank">Issues</a>
     </div>
 
     <div class="text-center mt-2 text-xs">
-        <a href="#">Privacy</a>
-        <span class="px-1 text-gray-500">
-            |
-        </span>
-        <a href="#">Terms & Conditions</a>
-        <span class="px-1 text-gray-500">
-            |
-        </span>
+        <a href="{{ route('policy.show') }}">Privacy</a>
+        <span class="px-1 text-gray-500">|</span>
+        <a href="{{ route('terms.show') }}">Terms & Conditions</a>
+        <span class="px-1 text-gray-500">|</span>
         <a href="#">Contributors</a>
-        <span class="px-1 text-gray-500">
-            |
-        </span>
+        <span class="px-1 text-gray-500">|</span>
         <a href="#">Security</a>
     </div>
 </div>

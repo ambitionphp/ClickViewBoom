@@ -44,6 +44,16 @@ Route::get('/about', function() {
     return view('about');
 })->name('about');
 
+Route::get('/privacy', function() {
+    SEOTools::setTitle('Privacy Policy');
+    return view('policy');
+})->name('policy.show');
+
+Route::get('/terms', function() {
+    SEOTools::setTitle('Terms of Use');
+    return view('terms');
+})->name('terms.show');
+
 Route::get('/docs/api', function() {
     SEOTools::setTitle('API Docs');
     return view('api.docs.overview');
