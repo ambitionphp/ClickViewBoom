@@ -3,7 +3,7 @@
     <hr class="mt-2 mb-4 border-gray-200" />
 
     <div class="text-center text-xs">
-        <a href="#">About</a>
+        <a href="{{ route('about') }}">About</a>
         <span class="px-1 text-gray-500">
             |
         </span>

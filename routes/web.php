@@ -39,6 +39,11 @@ Route::get('/secret/{text}', function(\App\Models\Text $text) {
     return response()->view('text.unknown');
 });
 
+Route::get('/about', function() {
+    SEOTools::setTitle('About');
+    return view('about');
+})->name('about');
+
 Route::get('/docs/api', function() {
     SEOTools::setTitle('API Docs');
     return view('api.docs.overview');
