@@ -5,8 +5,7 @@
                 <h2 class="font-semibold text-gray-600 text-xl leading-tight mb-1">Unknown secret</h2>
 
                 <div class="bg-yellow-100 rounded-lg py-2 px-3 mb-4 text-sm text-yellow-700 mb-3" role="alert">
-                    <i class="fas fa-bomb mr-1"></i>
-                    It either never existed or has already been viewed.
+                    <span class="mr-1">💣</span> It either never existed or has already been viewed.
                 </div>
 
                 <div class="shadow-xl pt-1 sm:rounded-lg">

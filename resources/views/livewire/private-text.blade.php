@@ -109,7 +109,7 @@
 
         <div class="shadow-xl pt-1 sm:rounded-lg">
             <button type="button" wire:click="boomText(1)" class="w-full px-4 py-2 bg-gray-500 text-center border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-600 focus:outline-none focus:border-gray-600 focus:ring focus:ring-gray-600 disabled:opacity-25 transition shadow-xl">
-                <i class="fas fa-bomb text-yellow-500 mr-1"></i> Boom this secret*
+                <span class="mr-1">💣</span> Boom this secret*
             </button>
         </div>
 
