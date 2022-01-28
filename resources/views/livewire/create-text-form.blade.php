@@ -45,9 +45,11 @@
                                     form-control
                                     block
                                     w-full
-                                    px-2
-                                    py-1
-                                    text-sm
+                                    px-2.5
+                                    py-2
+                                    md:px-2
+                                    md:py-1
+                                    md:text-sm
                                     font-normal
                                     text-gray-400
                                     bg-gray-50 bg-clip-padding
@@ -78,9 +80,11 @@
                                     form-control
                                     block
                                     w-full
-                                    px-2
-                                    py-1
-                                    text-sm
+                                    px-2.5
+                                    py-2
+                                    md:px-2
+                                    md:py-1
+                                    md:text-sm
                                     font-normal
                                     text-gray-400
                                     bg-gray-50 bg-clip-padding
@@ -110,9 +114,11 @@
                                     form-select appearance-none
                                     block
                                     w-full
-                                    px-2
-                                    py-1
-                                    text-sm
+                                    px-2.5
+                                    py-2
+                                    md:px-2
+                                    md:py-1
+                                    md:text-sm
                                     font-normal
                                     text-gray-600
                                     bg-white bg-clip-padding bg-no-repeat
