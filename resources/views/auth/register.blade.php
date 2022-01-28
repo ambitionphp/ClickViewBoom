@@ -1,11 +1,20 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class="text-center">
+                <x-jet-authentication-card-logo />
+                <h3 class="font-semibold text-xl">
+                    {{ config('app.name') }}
+                </h3>
+            </div>
         </x-slot>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
+
+            <h3 class="font-semibold text-lg">
+                Create a free account
+            </h3>
 
             <div class="mt-4">
                 <x-jet-label for="email" class="{{ $errors->has('email') ? 'text-red-600' : '' }}" value="{{ __('Email') }}" />

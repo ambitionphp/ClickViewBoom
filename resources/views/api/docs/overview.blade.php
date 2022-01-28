@@ -1,6 +1,6 @@
 <x-app-layout>
     <div>
-        <div class="max-w-xl mx-auto py-2 sm:px-6 lg:px-8">
+        <div class="max-w-xl mx-auto py-2 px-6 lg:px-8">
 
             <h1 class="font-semibold text-xl mb-2">API Overview</h1>
 

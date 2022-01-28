@@ -48,3 +48,10 @@ Route::get('/docs/api/secrets', function() {
     SEOTools::setTitle('API Docs');
     return view('api.docs.secrets');
 })->name('docs.api.secrets');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/recent', function () {
+    SEOTools::setTitle('Recent secrets');
+    return view('text.recent', [
+        'texts' => request()->user()->texts
+    ]);
+})->name('recent');

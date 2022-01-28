@@ -1,7 +1,12 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class="text-center">
+                <x-jet-authentication-card-logo />
+                <h3 class="font-semibold text-xl">
+                    {{ config('app.name') }}
+                </h3>
+            </div>
         </x-slot>
 
         @if (session('status'))
@@ -13,7 +18,11 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
+            <h3 class="font-semibold text-lg">
+                Log into your account
+            </h3>
+
+            <div class="mt-4">
                 <x-jet-label for="email" class="{{ $errors->has('email') ? 'text-red-600' : '' }}" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full {{ $errors->has('email') ? 'border-red-600' : '' }}" type="email" name="email" :value="old('email')" required autofocus />
                 @if($errors->has('email'))

@@ -45,7 +45,7 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="#">
+                            <x-jet-dropdown-link href="{{ route('recent') }}">
                                 {{ __('Recent Secrets') }}
                                 <span class="text-xs inline-block py-1 px-1.5 ml-1 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded">
                                     0

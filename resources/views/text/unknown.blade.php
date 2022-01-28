@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="py-2">
-        <div class="max-w-xl mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="max-w-xl mx-auto px-6 lg:px-8">
             <div class="pb-3">
                 <h2 class="font-semibold text-gray-600 text-xl leading-tight mb-1">Unknown secret</h2>
 
