@@ -1,7 +1,12 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class="text-center">
+                <x-jet-authentication-card-logo />
+                <h3 class="font-semibold text-xl">
+                    {{ config('app.name') }}
+                </h3>
+            </div>
         </x-slot>
 
         <div x-data="{ recovery: false }">
