@@ -113,7 +113,7 @@
             </button>
         </div>
 
-        <p class="my-3 text-center text-gray-600 text-sm">* Burning a secret will delete it before it has been read (click to confirm).</p>
+        <p class="my-3 text-center text-gray-600 text-sm">* Booming a secret will delete it before it has been read (click to confirm).</p>
 
         <hr class="my-4 border-gray-200" />
 

@@ -1345,6 +1345,18 @@ select {
 .rounded-br {
   border-bottom-right-radius: 0.25rem;
 }
+.rounded-tl-lg {
+  border-top-left-radius: 0.5rem;
+}
+.rounded-tr-lg {
+  border-top-right-radius: 0.5rem;
+}
+.rounded-bl-md {
+  border-bottom-left-radius: 0.375rem;
+}
+.rounded-br-md {
+  border-bottom-right-radius: 0.375rem;
+}
 .border {
   border-width: 1px;
 }
@@ -8456,6 +8468,14 @@ readers do not read off random characters that represent icons */
     border-bottom-right-radius: 0.375rem;
   }
 
+  .sm\:rounded-tl-lg {
+    border-top-left-radius: 0.5rem;
+  }
+
+  .sm\:rounded-tr-lg {
+    border-top-right-radius: 0.5rem;
+  }
+
   .sm\:p-6 {
     padding: 1.5rem;
   }
@@ -8563,6 +8583,11 @@ readers do not read off random characters that represent icons */
   .md\:py-1 {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
+  }
+
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .md\:text-right {
