@@ -9,7 +9,7 @@
         "artesaos/seotools": "^0.20.2",
         "fruitcake/laravel-cors": "^2.0",
         "godruoyi/php-snowflake": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^8.75",
         "laravel/horizon": "^5.8",
         "laravel/jetstream": "^2.6",

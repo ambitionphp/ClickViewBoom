@@ -72,6 +72,6 @@ Route::get('/docs/api/postman', function() {
 Route::middleware(['auth:sanctum', 'verified'])->get('/recent', function () {
     SEOTools::setTitle('Recent secrets');
     return view('text.recent', [
-        'texts' => request()->user()->texts
+        'texts' => request()->user()->texts()->orderBy('created_at', 'desc')->get()
     ]);
 })->name('recent');
