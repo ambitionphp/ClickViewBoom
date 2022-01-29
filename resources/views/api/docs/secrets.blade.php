@@ -196,9 +196,11 @@
                 </ul>
             </div>
 
+            <hr class="mt-2 mb-4 border-gray-200" />
+
             <div class="mb-4">
                 <h3 class="font-semibold text-l mb-2">
-                    Retreive recent secrets
+                    Retrieve recent secrets
                 </h3>
 
                 <div class="px-2 py-1 bg-yellow-500 rounded mb-2">
