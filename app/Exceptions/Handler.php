@@ -56,6 +56,7 @@ class Handler extends ExceptionHandler
                 'message' => 'You have hit the API throttle limit.'
             ], 404);
         }
+        #dd($exception);
 
         return parent::render($request, $exception);
     }

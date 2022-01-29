@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\Secretbox;
 use App\Models\Text;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -29,6 +30,10 @@ class ViewText extends Component
                 $this->decrypted = \Illuminate\Support\Facades\Crypt::decryptString($this->text->content);
             } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
                 $this->decrypted = null;
+            }
+            if( $this->decrypted && $this->text->password ) {
+                $secretbox = new Secretbox;
+                $this->decrypted = $secretbox->decrypt($this->decrypted, $this->passphrase);
             }
             Text::find($this->text->id)->delete();
             $this->visible = true;

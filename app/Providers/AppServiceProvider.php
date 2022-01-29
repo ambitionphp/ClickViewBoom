@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('create', function (Request $request) {
-            return Limit::perMinute(5);
+            return Limit::perMinute(12);
         });
     }
 

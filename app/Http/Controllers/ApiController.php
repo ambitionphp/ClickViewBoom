@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Secret;
+use App\Helpers\Secretbox;
 use App\Jobs\BoomText;
 use App\Mail\SecretReceived;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -48,45 +51,19 @@ class ApiController extends Controller
             ]);
         }
 
-        $passphrase = null;
-        $random = null;
-        if( $request->has('passphraseRandom') ) {
-            $random = $passphrase = Str::random(10);
-        }
-        elseif( $request->has('passphrase') ) {
-            $passphrase = $request->get('passphrase');
-        }
-
-        $private_key = resolve('snowflake')->id();
-
-        $user_id = $request->user()->id ?? null;
-
-        if( null !== $passphrase && !strlen($passphrase) )
-            $passphrase = null;
-        elseif( null !== $passphrase )
-            $passphrase = Hash::make($passphrase);
-
-        $text = Text::create([
-            'private_key' => $private_key,
-            'user_id' => $user_id,
-            'content' => Crypt::encryptString($request->get('secret')),
-            'password' => $passphrase,
-            'expires_at' => now()->addMinutes($request->get('ttl'))
-        ]);
-
-        // create delayed job to delete text (if in production)
-        if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
-
-        if( $request->has('recipient') ) {
-            dispatch(function () use ($request, $text) {
-                Mail::to($request->get('recipient'))->send(new SecretReceived($text));
-            })->afterResponse();
-        }
+        $secret = new Secret(Auth::id());
+        $text = $secret->create(
+            $request->get('secret'),
+            $request->get('ttl'),
+            $request->has('passphraseRandom'),
+            $request->get('passphrase'),
+            $request->get('recipient')
+        );
 
         return response()->json([
             'id' => $text->id,
-            'private_key' => $private_key,
-            'passphrase' => $random ?? (bool) $text->password,
+            'private_key' => $text->private_key,
+            'passphrase' => session('passphrase') ?? (bool) $text->password,
             'url' => route('text.secret', $text),
             'expires_at' => $text->expires_at
         ]);
@@ -128,6 +105,11 @@ class ApiController extends Controller
             $decrypted = \Illuminate\Support\Facades\Crypt::decryptString($text->content);
         } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
             $decrypted = null;
+        }
+
+        if( $decrypted && $text->password ) {
+            $secretbox = new Secretbox;
+            $decrypted = $secretbox->decrypt($decrypted, $request->get('passphrase'));
         }
 
         Text::find($text->id)->delete();

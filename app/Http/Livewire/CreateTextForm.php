@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\Secret;
 use App\Jobs\BoomText;
 use App\Mail\SecretReceived;
 use App\Models\Text;
@@ -31,41 +32,15 @@ class CreateTextForm extends Component
     public function generate($withRandomPassphrase=false)
     {
         $this->validate();
-        if( $withRandomPassphrase ) {
-            $this->passphrase = Str::random(10);
-            session(['passphrase'=>$this->passphrase]);
-        }
 
-        $private_key = resolve('snowflake')->id();
-
-        $user_id = Auth::id();
-
-        $passphrase = $this->passphrase;
-        if( null !== $passphrase && !strlen($passphrase) )
-            $passphrase = null;
-        elseif( null !== $passphrase )
-            $passphrase = Hash::make($passphrase);
-
-
-        $text = Text::create([
-            'private_key' => $private_key,
-            'user_id' => $user_id,
-            'content' => Crypt::encryptString($this->content),
-            'password' => $passphrase,
-            'expires_at' => now()->addMinutes($this->lifetime)
-        ]);
-
-        // create delayed job to delete text (if in production)
-        if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
-
-        if( $this->recipient ) {
-            dispatch(function () use ($text) {
-                Mail::to($this->recipient)->send(new SecretReceived($text));
-            })->afterResponse();
-        }
-
-        // create session to allow viewing share link/secret content
-        session(['private_key'=>$text->private_key]);
+        $secret = new Secret(Auth::id());
+        $text = $secret->create(
+            $this->content,
+            $this->lifetime,
+            $withRandomPassphrase,
+            $this->passphrase,
+            $this->recipient
+        );
 
         // redirect to private page with share link/secret content
         return redirect()->to(route('text.private', $text));
