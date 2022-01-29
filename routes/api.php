@@ -19,5 +19,5 @@ Route::prefix('v1')->middleware(['auth:sanctum', 'ability:read', 'json.response'
     Route::get('/recent', [\App\Http\Controllers\ApiController::class, 'recent']);
     Route::post('/secret', [\App\Http\Controllers\ApiController::class, 'secret']);
     Route::post('/boom', [\App\Http\Controllers\ApiController::class, 'boom']);
-    Route::middleware(['throttle:create'])->post('/create', [\App\Http\Controllers\ApiController::class, 'create']);
+    Route::middleware(['throttle:12,1'])->post('/create', [\App\Http\Controllers\ApiController::class, 'create']);
 });

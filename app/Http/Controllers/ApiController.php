@@ -51,7 +51,7 @@ class ApiController extends Controller
             ]);
         }
 
-        $secret = new Secret(Auth::id());
+        $secret = new Secret(Auth::id(), true);
         $text = $secret->create(
             $request->get('secret'),
             $request->get('ttl'),

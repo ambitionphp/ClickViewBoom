@@ -3,6 +3,7 @@ namespace App\Helpers;
 
 use App\Jobs\BoomText;
 use App\Mail\SecretReceived;
+use App\Models\Analaytic;
 use App\Models\Text;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -14,10 +15,12 @@ class Secret {
 
     public $private_key;
     public $user_id;
+    public $type;
 
-    public function __construct($user) {
+    public function __construct($user, $api=false) {
         $this->user_id = $user;
         $this->private_key = $this->private_key();
+        $this->type = $api ? 'api' : 'web';
     }
 
     private function private_key() {
@@ -48,7 +51,18 @@ class Secret {
         // create session to allow viewing share link/secret content
         session(['private_key'=>$text->private_key]);
 
+        $this->analaytics();
+
         return $text;
+    }
+
+    private function analaytics() {
+        $record = Analaytic::firstOrCreate([
+            'date' => now()->toDateString()
+        ]);
+
+        $record->increment($this->type);
+        $record->increment('total');
     }
 
     private function encryptFromPassphrase($passphrase, $content) {
