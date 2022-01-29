@@ -77,6 +77,7 @@ class ApiController extends Controller
 
         return response()->json([
             'id' => $text->id,
+            'private_key' => $private_key,
             'passphrase' => $random ?? (bool) $text->password,
             'url' => route('text.secret', $text),
             'expires_at' => $text->expires_at
@@ -84,25 +85,75 @@ class ApiController extends Controller
     }
 
     public function secret(Text $text, Request $request) {
-        if($text->user_id !== $request->user()->id) {
-            return [
-                'error' => true
-            ];
+
+        $validator = Validator::make($request->all(), [
+            'secret' => ['required']
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->messages(),
+            ]);
         }
+
+        $errors = [];
+
+        $text = Text::find( $request->get('secret') );
+
+        if( ! $text ) {
+            $errors[] = 'Secret has never existed or has already been viewed.';
+        }
+
+        if( !count($errors) && $text->password && ( ! $request->has('passphrase') || ! Hash::check($request->get('passphrase'), $text->password) ) ) {
+            $errors[] = 'Passphrase not set or incorrect.';
+        }
+
+        if( count($errors) ) {
+            return response()->json([
+                'success' => false,
+                'errors' => $errors,
+            ]);
+        }
+
+        try {
+            $decrypted = \Illuminate\Support\Facades\Crypt::decryptString($text->content);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            $decrypted = null;
+        }
+
+        Text::find($text->id)->delete();
+
         return response()->json([
             'id' => $text->id,
-            'passphrase' => (bool) $text->password,
-            'url' => route('text.secret', $text),
-            'expires_at' => $text->expires_at
+            'secret' => $decrypted
         ]);
     }
 
     public function boom(Text $text, Request $request) {
-        if($text->user_id !== $request->user()->id) {
-            return [
-                'error' => true
-            ];
+
+        $validator = Validator::make($request->all(), [
+            'private_key' => ['required']
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->messages(),
+            ]);
         }
+
+        $text = Text::where('private_key', $request->get('private_key'))->first();
+
+        if( ! $text ) {
+            return response()->json([
+                'success' => false,
+                'errors' => [
+                    'Secret has never existed or has already been viewed.'
+                ],
+            ]);
+        }
+
         $id = $text->id;
         $text->delete();
         return response()->json([

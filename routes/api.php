@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->middleware(['auth:sanctum', 'ability:read', 'json.response'])->group(function() {
     Route::get('/user', [\App\Http\Controllers\ApiController::class, 'user']);
     Route::get('/recent', [\App\Http\Controllers\ApiController::class, 'recent']);
-    Route::get('/secret/{text}', [\App\Http\Controllers\ApiController::class, 'secret']);
-    Route::get('/boom/{text}', [\App\Http\Controllers\ApiController::class, 'boom']);
+    Route::post('/secret', [\App\Http\Controllers\ApiController::class, 'secret']);
+    Route::post('/boom', [\App\Http\Controllers\ApiController::class, 'boom']);
     Route::middleware(['throttle:create'])->post('/create', [\App\Http\Controllers\ApiController::class, 'create']);
 });

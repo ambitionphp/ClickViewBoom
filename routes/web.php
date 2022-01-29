@@ -64,6 +64,11 @@ Route::get('/docs/api/secrets', function() {
     return view('api.docs.secrets');
 })->name('docs.api.secrets');
 
+Route::get('/docs/api/postman', function() {
+    SEOTools::setTitle('Run in Postman');
+    return view('api.docs.postman');
+})->name('docs.api.postman');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/recent', function () {
     SEOTools::setTitle('Recent secrets');
     return view('text.recent', [

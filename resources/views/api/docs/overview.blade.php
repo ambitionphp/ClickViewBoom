@@ -39,6 +39,22 @@
                       focus:outline-none focus:ring-0
                     ">Secrets</a>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <a href="{{ route('docs.api.postman') }}" class="
+                      nav-link
+                      block
+                      font-medium
+                      text-xs
+                      leading-tight
+                      uppercase
+                      rounded
+                      px-6
+                      py-3
+                      my-2
+                      md:mr-2
+                      focus:outline-none focus:ring-0
+                    ">Run in Postman</a>
+                </li>
             </ul>
 
             <div class="mb-4">
@@ -113,7 +129,6 @@
                         }
                     </code>
                 </div>
-
                 <h5 class="font-semibold text-sm">Attributes</h5>
                 <ul class="list-disc text-gray-800 text-sm mb-3 pl-4">
                     <li><span class="font-bold">id:</span> your user ID</li>
@@ -122,7 +137,6 @@
                     <li><span class="font-bold">created_at:</span> when you signed up</li>
                 </ul>
             </div>
-
         </div>
     </div>
 </x-app-layout>
