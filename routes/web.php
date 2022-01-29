@@ -69,6 +69,10 @@ Route::get('/docs/api/postman', function() {
     return view('api.docs.postman');
 })->name('docs.api.postman');
 
+Route::get('/mail', function() {
+    return new App\Mail\SecretReceived();
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/recent', function () {
     SEOTools::setTitle('Recent secrets');
     return view('text.recent', [

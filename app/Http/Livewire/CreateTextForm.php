@@ -3,9 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Jobs\BoomText;
+use App\Mail\SecretReceived;
 use App\Models\Text;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Illuminate\Support\Facades\Crypt;
@@ -55,6 +57,12 @@ class CreateTextForm extends Component
 
         // create delayed job to delete text (if in production)
         if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
+
+        if( $this->recipient ) {
+            dispatch(function () use ($text) {
+                Mail::to($this->recipient)->send(new SecretReceived($text));
+            })->afterResponse();
+        }
 
         // create session to allow viewing share link/secret content
         session(['private_key'=>$text->private_key]);

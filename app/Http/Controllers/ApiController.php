@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\BoomText;
+use App\Mail\SecretReceived;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Text;
@@ -74,6 +76,12 @@ class ApiController extends Controller
 
         // create delayed job to delete text (if in production)
         if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
+
+        if( $request->has('recipient') ) {
+            dispatch(function () use ($request, $text) {
+                Mail::to($request->get('recipient'))->send(new SecretReceived($text));
+            })->afterResponse();
+        }
 
         return response()->json([
             'id' => $text->id,
