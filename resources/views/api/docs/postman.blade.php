@@ -68,8 +68,8 @@
 
                 <div class="postman-run-button"
                      data-postman-action="collection/fork"
-                     data-postman-var-1="2096693-676308d7-c205-40a3-88cf-04e4a0a3ea5f"
-                     data-postman-collection-url="entityId=2096693-676308d7-c205-40a3-88cf-04e4a0a3ea5f&entityType=collection&workspaceId=d0927a3b-363d-4b63-ba20-0c7bc140b9d3"></div>
+                     data-postman-var-1="19373134-0c415253-cac3-4f9d-869c-578cab4722cb"
+                     data-postman-collection-url="entityId=19373134-0c415253-cac3-4f9d-869c-578cab4722cb&entityType=collection&workspaceId=3489d3e2-cf9a-43e1-907e-ca9dcc894633"></div>
                 <script type="text/javascript">
                     (function (p,o,s,t,m,a,n) {
                         !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
