@@ -54,7 +54,7 @@ class CreateTextForm extends Component
         ]);
 
         // create delayed job to delete text (if in production)
-        if( 'production' === config('app.env') ) BoomText::dispatch($text)->delay($text->expires_at);
+        if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
 
         // create session to allow viewing share link/secret content
         session(['private_key'=>$text->private_key]);

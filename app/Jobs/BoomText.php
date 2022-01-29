@@ -14,16 +14,16 @@ class BoomText implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $text;
+    public $textId;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(Text $text)
+    public function __construct($textId)
     {
-        $this->text = $text;
+        $this->textId = $textId;
     }
 
     /**
@@ -33,6 +33,9 @@ class BoomText implements ShouldQueue
      */
     public function handle()
     {
-        $this->text->delete();
+        $text = Text::find($this->textId);
+        if( $text ) {
+            $text->delete();
+        }
     }
 }

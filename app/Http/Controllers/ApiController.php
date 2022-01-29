@@ -73,7 +73,7 @@ class ApiController extends Controller
         ]);
 
         // create delayed job to delete text (if in production)
-        if( 'production' === config('app.env') ) BoomText::dispatch($text)->delay($text->expires_at);
+        if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
 
         return response()->json([
             'id' => $text->id,
