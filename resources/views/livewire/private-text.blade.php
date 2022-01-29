@@ -125,6 +125,7 @@
     @else
         <div class="pb-3">
             <h2 class="font-semibold text-gray-600 text-xl leading-tight mb-1">Secret: {{ $text->id }}</h2>
+            @if( $text->password )
             <div class="mt-1 mb-2">
                 <input
                     wire:model.defer="passphrase"
@@ -150,6 +151,7 @@
                     placeholder="Enter passphrase"
                 />
             </div>
+            @endif
             <div class="shadow-xl pt-1 sm:rounded-lg">
                 <button type="button" wire:click="boomText(2)" class="w-full px-4 py-2 bg-orange-400 text-center border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-500 active:bg-orange-500 focus:outline-none focus:border-orange-500 focus:ring focus:ring-orange-500 disabled:opacity-25 transition shadow-xl">
                     Confirm: Boom this secret
