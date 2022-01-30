@@ -22,7 +22,7 @@ class PrivateText extends Component
         if( $passphrase ) {
             $this->generatedPassphrase = $passphrase;
         }
-        if(  $session &&  intval($session) === $this->text->private_key ) {
+        if( ( $session &&  intval($session) === $this->text->private_key ) || ( request()->has('token') && request()->get('token') === md5($this->text->expires_at) ) ) {
             if( $this->text->password ) {
                 $this->decrypted = 'This message is encrypted with your passphrase.';
             }
