@@ -24,8 +24,8 @@ class PrivateText extends Component
         }
         dd([
             request()->get('token'),
-            md5($this->text->expires_at->toIso8601ZuluString()),
-            $this->text->expires_at->toIso8601ZuluString()
+            md5($this->text->expires_at->toJSON()),
+            $this->text->expires_at->toJSON()
         ]);
         if( ( $session &&  intval($session) === $this->text->private_key ) || ( request()->has('token') && request()->get('token') === md5($this->text->expires_at) ) ) {
             if( $this->text->password ) {
