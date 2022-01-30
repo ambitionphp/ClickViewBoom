@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
                 config('snowflake.data_center'),
                 config('snowflake.worker_node'))
             )
-                ->setStartTimeStamp(strtotime('2022-01-27') * 1000)
-                ->setSequenceResolver(new RandomSequenceResolver());
+            ->setStartTimeStamp(strtotime('2022-01-27') * 1000)
+            ->setSequenceResolver(new RandomSequenceResolver());
         });
     }
 
@@ -51,6 +51,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
     }
 }
