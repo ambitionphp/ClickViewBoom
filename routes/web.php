@@ -54,15 +54,14 @@ Route::get('/terms', function() {
     return view('terms');
 })->name('terms.show');
 
-Route::get('/contributors', function() {
-    SEOTools::setTitle('Contributors');
-    return view('contributors');
-})->name('contributors');
-
 Route::get('/sponsors', function() {
     SEOTools::setTitle('Sponsors');
     return view('sponsors');
 })->name('sponsors');
+
+Route::get('/contributors', function() {
+    return redirect()->route('sponsors');
+})->name('contributors');
 
 Route::get('/docs/api', function() {
     SEOTools::setTitle('API Docs');
