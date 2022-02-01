@@ -6,7 +6,9 @@
 
         <h1 class="font-semibold text-xl mb-2">Sponsors</h1>
 
-        <p class="text-sm mb-3">{{ config('app.name') }} remains online mainly by the support of it's sponsors. We provide complete transparency with our contributions.</p>
+        <p class="text-sm mb-3">{{ config('app.name') }} will always remain not only ad-free but also 100% free to use. All future features and upgrades wil remain free for everyone.</p>
+
+        <p class="text-sm mb-3">If you enjoy our service or our open-source code we would love to have you sponsor it below. Contributions are completely transparent and go directly towards domain, hosting and coffee expenses. :)</p>
 
         <div class="grid grid-cols-3 gap-4 my-5">
             <div class="bg-gray-200 px-2 py-1 rounded text-center">
