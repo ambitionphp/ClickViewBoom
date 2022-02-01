@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="py-2">
-        <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-xl mx-auto px-6">
             <h1 class="font-semibold text-xl mb-2">Secrets since release</h1>
 
             <div class="grid grid-cols-3 gap-4 mb-4">
