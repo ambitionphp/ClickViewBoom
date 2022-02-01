@@ -76,6 +76,35 @@
                         <h1 class="font-semibold text-lg mb-2">Payment details</h1>
                     </div>
 
+                    <div class="flex mb-3">
+                        <div class="flex-none self-center">
+                            @if($image)
+                                <div class="flex rounded-full w-12 h-12" style="background-image:url({{ $image->temporaryUrl() }});background-size:cover;background-position:center center;"></div>
+                            @else
+                                <div class="flex rounded-full w-12 h-12 bg-gray-200 text-gray-700">
+                                    <i class="fa fa-user-secret fa-fw self-center mx-auto mb-1"></i>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="grow self-center">
+                            <div class="px-3">
+                                <span class="block font-semibold">{{ $name }}</span>
+                                <span class="block text-gray-400 text-sm">{{ $url }}</span>
+                            </div>
+                        </div>
+                        <div class="flex-none self-center pt-1">
+                            <span class="text-green-600 text-sm font-semibold">${{ number_format($contributionCustom??$contribution,2) }}</span>
+                        </div>
+                        <div class="flex-none self-center">
+                            <div class="h-16 w-16">
+                                <livewire:livewire-pie-chart
+                                    key="{{ $pieChartModel->reactiveKey() }}"
+                                    :pie-chart-model="$pieChartModel"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
                     <div x-data="
                         {
                             cardName: @entangle('cardName'),
