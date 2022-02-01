@@ -11,7 +11,7 @@
         <div class="grid grid-cols-3 gap-4 my-5">
             <div class="bg-gray-200 px-2 py-1 rounded text-center">
                 <span class="text-xs uppercase">
-                    Domain
+                    Domain*
                 </span>
                 <div>
                     <span class="text-lg font-semibold">
@@ -24,7 +24,7 @@
             </div>
             <div class="bg-gray-200 px-2 py-1 rounded text-center">
                 <span class="text-xs uppercase">
-                    Hosting
+                    Hosting**
                 </span>
                 <div>
                     <span class="text-lg font-semibold">
@@ -37,7 +37,7 @@
             </div>
             <div class="bg-gray-200 px-2 py-1 rounded text-center">
                     <span class="text-xs uppercase">
-                        Coffees
+                        Coffees***
                     </span>
                 <div>
                     <span class="text-lg font-semibold">
@@ -324,9 +324,15 @@
             @endif
         @endif
 
+        <div class="my-3">
+            <p class="text-xs text-center"><span class="font-bold">*</span> domain based at $15/year</p>
+            <p class="text-xs text-center"><span class="font-bold">**</span> hosting based at $35/month</p>
+            <p class="text-xs text-center"><span class="font-bold">***</span> coffee based at $5/per cup</p>
+        </div>
+
         @if($contributions->count())
             <div>
-                <div class="mt-5">
+                <div class="">
                     <h1 class="font-semibold text-lg mb-2">Our Sponsors</h1>
                 </div>
 
