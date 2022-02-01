@@ -1,6 +1,5 @@
 <div>
     @push('scripts')
-        @livewireChartsScripts
         <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     @endpush
     <div class="max-w-xl mx-auto py-2 px-6 lg:px-8">
@@ -307,7 +306,7 @@
                     <hr class="my-4 border-gray-200" />
 
                     <div class="flex mt-3">
-                        <div class="flex-none">
+                        <div class="flex-none self-center">
                             @if($contribution->image_path)
                                 <img src="{{ $contribution->image_url }}" class="rounded-full w-12">
                             @else
@@ -322,8 +321,16 @@
                                 <span class="block text-gray-400 text-sm">{{ $contribution->url }}</span>
                             </div>
                         </div>
+                        <div class="flex-none self-center pt-1">
+                            <span class="text-green-600 text-sm font-semibold">{{ $contribution->amount_string }}</span>
+                        </div>
                         <div class="flex-none self-center">
-                            <span class="text-lg text-green-600 font-semibold">{{ $contribution->amount_string }}</span>
+                            <div class="h-16 w-16">
+                                <livewire:livewire-pie-chart
+                                    key="{{ $contribution->pieChartModel->reactiveKey() }}"
+                                    :pie-chart-model="$contribution->pieChartModel"
+                                />
+                            </div>
                         </div>
                     </div>
                 @endforeach

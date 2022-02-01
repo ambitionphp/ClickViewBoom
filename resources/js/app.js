@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./vendor/livewire-charts/app');
 
 import Alpine from 'alpinejs';
 import autosize from "autosize/dist/autosize";
