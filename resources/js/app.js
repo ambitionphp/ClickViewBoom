@@ -11,3 +11,4 @@ Alpine.start();
 autosize(document.querySelectorAll('textarea'));
 
 new ClipboardJS('.copy-paste');
+

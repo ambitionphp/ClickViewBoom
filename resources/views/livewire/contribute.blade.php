@@ -81,8 +81,8 @@
                         {
                             cardName: @entangle('cardName'),
                             cardNumber: '',
-                            cardExpMonth: '',
-                            cardExpYear: '',
+                            cardExpMonth: @entangle('cardExpMonth'),
+                            cardExpYear: @entangle('cardExpYear'),
                             cardCode: '',
                             process() {
                                 Stripe.setPublishableKey('{{ config('services.stripe.key') }}');
@@ -114,7 +114,7 @@
                         <div class="mb-1">
                             <label class="font-bold text-sm mb-2 ml-1">Card number</label>
                             <div>
-                                <input x-model="cardNumber" class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text"/>
+                                <input x-model="cardNumber" data-inputmask="'mask': '9999 9999 9999 9999'" class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text"/>
                             </div>
                         </div>
                         <div class="mb-1 -mx-2 flex items-end">
