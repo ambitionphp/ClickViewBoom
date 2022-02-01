@@ -6,7 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-openssl": "*",
+        "ext-sodium": "*",
         "artesaos/seotools": "^0.20.2",
+        "asantibanez/livewire-charts": "^2.3",
         "fruitcake/laravel-cors": "^2.0",
         "godruoyi/php-snowflake": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
@@ -16,8 +19,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
-        "ext-openssl": "*",
-        "ext-sodium": "*"
+        "stripe/stripe-php": "^7.112"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

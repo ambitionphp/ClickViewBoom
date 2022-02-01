@@ -2,26 +2,25 @@
 
 namespace App\Mail;
 
-use App\Models\Text;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SecretReceived extends Mailable
+class Contribution extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $text;
+    public $contribution;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Text $text)
+    public function __construct(\App\Models\Contribution $contribution)
     {
-        $this->text = $text;
+        $this->contribution = $contribution;
     }
 
     /**
@@ -31,8 +30,8 @@ class SecretReceived extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.secrets.received', [
-            'url' => route('text.secret', $this->text)
-        ])->subject('You received a secret text');
+        return $this->markdown('emails.contributions.successful', [
+            'contribution' => $this->contribution
+        ])->subject('Thanks, you are awesome!');
     }
 }

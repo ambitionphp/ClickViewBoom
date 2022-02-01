@@ -3,15 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Helpers\Secret;
-use App\Jobs\BoomText;
-use App\Mail\SecretReceived;
-use App\Models\Text;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Illuminate\Support\Facades\Crypt;
 
 class CreateTextForm extends Component
 {
