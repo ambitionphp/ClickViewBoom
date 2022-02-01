@@ -13,7 +13,7 @@
             <div>
                 <ul class="list-disc">
                     <li>All secret texts are encrypted before stored.</li>
-                    <li>Secret texts with a passphrase are first encrypted using the passphrase before being encrypted again with our base encryption.</li>
+                    <li>Secret texts with a passphrase are first encrypted using the passphrase provided before being encrypted again with our base encryption.</li>
                     <li>Passphrase protected texts cannot be recovered without the passphrase. Sorry, but this keeps things secure.</li>
                     <li>Texts are instantly deleted upon being viewed. In fact, the texts are removed from our database before it's even displayed to you.</li>
                     <li>We do not store your ip, user agent, device details or any identifying information. We also do not use any third party analytic services and we are completely ad-free.</li>
