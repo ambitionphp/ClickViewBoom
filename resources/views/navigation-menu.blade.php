@@ -48,7 +48,7 @@
                             <x-jet-dropdown-link href="{{ route('recent') }}">
                                 {{ __('Recent Secrets') }}
                                 <span class="text-xs inline-block py-1 px-1.5 ml-1 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded">
-                                    {{ auth()->user()->texts->count() }}
+                                    {{ auth()->user()->texts()->whereDate('expires_at', '>', now())->count() }}
                                 </span>
                             </x-jet-dropdown-link>
 

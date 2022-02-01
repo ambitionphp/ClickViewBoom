@@ -69,7 +69,7 @@ class ApiController extends Controller
         ]);
     }
 
-    public function secret(Text $text, Request $request) {
+    public function secret(Request $request) {
 
         $validator = Validator::make($request->all(), [
             'secret' => ['required']
@@ -85,6 +85,10 @@ class ApiController extends Controller
         $errors = [];
 
         $text = Text::find( $request->get('secret') );
+        if( $text->expires_at->lessThanOrEqualTo(\Carbon\Carbon::now()) ) {
+            $text->delete();
+            $text = null;
+        }
 
         if( ! $text ) {
             $errors[] = 'Secret has never existed or has already been viewed.';
@@ -120,7 +124,7 @@ class ApiController extends Controller
         ]);
     }
 
-    public function boom(Text $text, Request $request) {
+    public function boom(Request $request) {
 
         $validator = Validator::make($request->all(), [
             'private_key' => ['required']
@@ -154,7 +158,7 @@ class ApiController extends Controller
     }
 
     public function recent(Request $request) {
-        $texts = $request->user()->texts()->orderBy('id', 'desc')->get()->map(function($item) {
+        $texts = $request->user()->texts()->whereDate('expires_at', '>', now())->orderBy('id', 'desc')->get()->map(function($item) {
             return [
                 'id' => $item->id,
                 'passphrase' => (bool) $item->password,

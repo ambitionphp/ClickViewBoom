@@ -40,7 +40,7 @@ class Secret {
         ]);
 
         // create delayed job to delete text (if in production)
-        if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
+        //if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
 
         if( $recipient ) {
             dispatch(function () use ($recipient, $text) {

@@ -20,6 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('/private/{text:private_key}', function(\App\Models\Text $text) {
+    if( $text->expires_at->lessThanOrEqualTo(\Carbon\Carbon::now()) ) {
+        $text->delete();
+        SEOTools::setTitle('No such text');
+        return response()->view('text.unknown');
+    }
     SEOTools::setTitle('You saved a text');
     return view('text.private', [
         'text' => $text
@@ -30,6 +35,11 @@ Route::get('/private/{text:private_key}', function(\App\Models\Text $text) {
 });
 
 Route::get('/secret/{text}', function(\App\Models\Text $text) {
+    if( $text->expires_at->lessThanOrEqualTo(\Carbon\Carbon::now()) ) {
+        $text->delete();
+        SEOTools::setTitle('No such text');
+        return response()->view('text.unknown');
+    }
     SEOTools::setTitle('You received a text');
     return view('text.secret', [
         'text' => $text
@@ -81,6 +91,6 @@ Route::get('/docs/api/postman', function() {
 Route::middleware(['auth:sanctum', 'verified'])->get('/recent', function () {
     SEOTools::setTitle('Recent secrets');
     return view('text.recent', [
-        'texts' => request()->user()->texts()->orderBy('created_at', 'desc')->get()
+        'texts' => request()->user()->texts()->whereDate('expires_at', '>', now())->orderBy('created_at', 'desc')->get()
     ]);
 })->name('recent');
