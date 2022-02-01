@@ -155,7 +155,7 @@ class Contribute extends Component
 
             $contribution = Contribution::create([
                 'name' => $this->name,
-                'image_path' => $this->image ?$this->image->store('photos') : null,
+                'image_path' => $this->image ?$this->image->storePublicly('photos') : null,
                 'email' => $this->email,
                 'url' => $this->url,
                 'stripe_token' => $token,

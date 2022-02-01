@@ -249,8 +249,8 @@
                     </div>
                 </div>
 
-                <div class="flex mt-3">
-                    <div class="grow">
+                <div class="flex mb-4">
+                    <div class="grow self-center">
                         <label for="domain" class="relative flex items-center cursor-pointer mb-2">
                             <input wire:model="domain" type="checkbox" id="domain" class="sr-only peer" />
                             <div class="h-6 bg-gray-200 border-2 border-gray-200 rounded-full w-11 after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:bg-violet-300 peer-checked:border-violet-300 after:transition-all after:duration-300"></div>
