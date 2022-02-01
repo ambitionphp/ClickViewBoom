@@ -49,6 +49,16 @@ Route::get('/secret/{text}', function(\App\Models\Text $text) {
     return response()->view('text.unknown');
 });
 
+Route::get('/stats', function() {
+    SEOTools::setTitle('Stats');
+    $stats = \App\Models\Analaytic::get();
+    return view('stats', [
+        'api' => $stats->sum('api'),
+        'web' => $stats->sum('web'),
+        'total' => $stats->sum('total')
+    ]);
+})->name('stats');
+
 Route::get('/about', function() {
     SEOTools::setTitle('About');
     return view('about');
