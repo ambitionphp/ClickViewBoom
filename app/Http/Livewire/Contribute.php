@@ -38,6 +38,13 @@ class Contribute extends Component
     public $code;
     public $completed = false;
 
+    public function bail()
+    {
+        $this->doContribute = false;
+        $this->details = false;
+        $this->payment = false;
+    }
+
     public function mount()
     {
         $this->cardExpYear = now()->year;

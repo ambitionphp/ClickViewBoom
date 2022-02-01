@@ -207,7 +207,7 @@
                             </button>
                         </div>
                         <div class="flex-none pl-2">
-                            <button type="button" wire:click="$set('doContribute', false)" class="w-full px-4 py-2 bg-gray-500 text-center border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-600 focus:outline-none focus:border-gray-600 focus:ring focus:ring-gray-600 disabled:opacity-25 transition shadow-xl">
+                            <button type="button" wire:click="bail" class="w-full px-4 py-2 bg-gray-500 text-center border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-600 focus:outline-none focus:border-gray-600 focus:ring focus:ring-gray-600 disabled:opacity-25 transition shadow-xl">
                                 Cancel
                             </button>
                         </div>
@@ -286,7 +286,7 @@
                         </button>
                     </div>
                     <div class="flex-none pl-2">
-                        <button type="button" wire:click="$set('doContribute', false)" class="w-full px-4 py-2 bg-gray-500 text-center border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-600 focus:outline-none focus:border-gray-600 focus:ring focus:ring-gray-600 disabled:opacity-25 transition shadow-xl">
+                        <button type="button" wire:click="bail" class="w-full px-4 py-2 bg-gray-500 text-center border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-600 focus:outline-none focus:border-gray-600 focus:ring focus:ring-gray-600 disabled:opacity-25 transition shadow-xl">
                             Cancel
                         </button>
                     </div>
