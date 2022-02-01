@@ -75,7 +75,7 @@ class Sponsor extends Component
 
         return view('livewire.sponsor', [
             'pieChartModel' => $pieChartModel,
-            'contributions' => Contribution::orderBy('id', 'desc')->paginate(15)
+            'contributions' => Contribution::orderBy('amount', 'desc')->paginate(15)
         ]);
     }
 
