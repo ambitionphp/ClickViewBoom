@@ -17,7 +17,7 @@
         <span class="px-1 text-gray-500">|</span>
         <a href="{{ route('terms.show') }}">Terms & Conditions</a>
         <span class="px-1 text-gray-500">|</span>
-        <a href="{{ route('contributors') }}">Contributors</a>
+        <a href="{{ route('sponsors') }}">Sponsors</a>
         <span class="px-1 text-gray-500">|</span>
         <a href="#">Stickers</a>
     </div>

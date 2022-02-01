@@ -59,6 +59,11 @@ Route::get('/contributors', function() {
     return view('contributors');
 })->name('contributors');
 
+Route::get('/sponsors', function() {
+    SEOTools::setTitle('Sponsors');
+    return view('sponsors');
+})->name('sponsors');
+
 Route::get('/docs/api', function() {
     SEOTools::setTitle('API Docs');
     return view('api.docs.overview');
