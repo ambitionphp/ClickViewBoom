@@ -8,7 +8,7 @@
 
         <p class="text-sm mb-3">{{ config('app.name') }} remains online mainly by the support of it's contributors. We provide complete transparency with our contributions.</p>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4 my-5">
             <div class="bg-gray-200 px-2 py-1 rounded text-center">
                 <span class="text-xs uppercase">
                     Domain
@@ -51,7 +51,7 @@
         </div>
 
         @if( ! $doContribute )
-            <div class="grid grid-cols-5 md:grid-cols-3 gap-4 mt-4">
+            <div class="grid grid-cols-5 md:grid-cols-3 gap-4 mt-5">
                 <div class="col-span-3 md:col-span-2 text-sm">
                     Would you like to contribute the the development and longevity of {{ config('app.name') }}?
                 </div>
@@ -64,7 +64,7 @@
         @else
             @if($completed)
                 <div>
-                    <div class="mt-4 mb-3">
+                    <div class="mt-5 mb-3">
                         <h1 class="font-semibold text-lg text-green-600 mb-2">Payment successful</h1>
                     </div>
 
@@ -72,7 +72,7 @@
                 </div>
             @elseif( $payment )
                 <div>
-                    <div class="mt-4 mb-3">
+                    <div class="mt-5 mb-3">
                         <h1 class="font-semibold text-lg mb-2">Payment details</h1>
                     </div>
 
@@ -159,7 +159,7 @@
                 </div>
             @elseif( $details )
                 <div>
-                    <div class="mt-4">
+                    <div class="mt-5">
                         <h1 class="font-semibold text-lg mb-2">Contributor details</h1>
                     </div>
 
@@ -215,7 +215,7 @@
                 </div>
             @else
             <div>
-                <div class="mt-4">
+                <div class="mt-5">
                     <h1 class="font-semibold text-lg mb-2">Contribute</h1>
                 </div>
                 <div class="flex">
@@ -297,7 +297,7 @@
 
         @if($contributions->count())
         <div>
-            <div class="mt-4">
+            <div class="mt-5">
                 <h1 class="font-semibold text-lg mb-2">Our Contributors</h1>
             </div>
 
