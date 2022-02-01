@@ -54,7 +54,7 @@
 
         @if( ! $doContribute )
             <div class="grid grid-cols-5 md:grid-cols-3 gap-4 mt-5">
-                <div class="col-span-3 md:col-span-2 text-sm">
+                <div class="col-span-3 md:col-span-2 self-center text-sm">
                     Would you like to sponsor the the development and longevity of {{ config('app.name') }}?
                 </div>
                 <div class="col-span-2 md:col-span-1 self-center">
