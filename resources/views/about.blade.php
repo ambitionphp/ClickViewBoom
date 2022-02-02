@@ -11,7 +11,7 @@
             <h1 class="font-semibold text-xl mb-2">Security & Technical</h1>
 
             <div>
-                <ul class="list-disc">
+                <ul class="list-disc text-sm">
                     <li>All secret texts are encrypted before stored.</li>
                     <li>Secret texts with a passphrase are first encrypted using the passphrase provided before being encrypted again with our base encryption.</li>
                     <li>Passphrase protected texts cannot be recovered without the passphrase. Sorry, but this keeps things secure.</li>
