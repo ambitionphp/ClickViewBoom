@@ -53,6 +53,7 @@ Route::get('/stats', function() {
     SEOTools::setTitle('Stats');
     $stats = \App\Models\Analaytic::get();
     return view('stats', [
+        'users' => \App\Models\User::count(),
         'api' => $stats->sum('api'),
         'web' => $stats->sum('web'),
         'total' => $stats->sum('total')

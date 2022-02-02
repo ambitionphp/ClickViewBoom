@@ -3,8 +3,18 @@
         <div class="max-w-xl mx-auto px-6">
             <h1 class="font-semibold text-xl mb-2">Secrets since release</h1>
 
-            <div class="grid grid-cols-3 gap-4 mb-4">
-                <div class="bg-gray-200 px-2 py-1 rounded text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div class="col-span-1 bg-gray-200 px-2 py-1 rounded text-center">
+                    <div>
+                        <span class="text-lg font-semibold">
+                            {{ $users }}
+                        </span>
+                    </div>
+                    <span class="text-xs uppercase">
+                        Users
+                    </span>
+                </div>
+                <div class="col-span-1 bg-gray-200 px-2 py-1 rounded text-center">
                     <div>
                         <span class="text-lg font-semibold">
                             {{ $api }}
@@ -14,7 +24,7 @@
                         API Secrets
                     </span>
                 </div>
-                <div class="bg-gray-200 px-2 py-1 rounded text-center">
+                <div class="col-span-1 bg-gray-200 px-2 py-1 rounded text-center">
                     <div>
                         <span class="text-lg font-semibold">
                             {{ $web }}
@@ -24,7 +34,7 @@
                         Web Secrets
                     </span>
                 </div>
-                <div class="bg-gray-200 px-2 py-1 rounded text-center">
+                <div class="col-span-1 bg-gray-200 px-2 py-1 rounded text-center">
                     <div>
                         <span class="text-lg font-semibold">
                             {{ $total }}
