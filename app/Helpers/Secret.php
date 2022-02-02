@@ -39,9 +39,6 @@ class Secret {
             'expires_at' => now()->addMinutes($ttl)
         ]);
 
-        // create delayed job to delete text (if in production)
-        //if( 'production' === config('app.env') ) BoomText::dispatch($text->id)->delay($text->expires_at);
-
         if( $recipient ) {
             dispatch(function () use ($recipient, $text) {
                 Mail::to($recipient)->send(new SecretReceived($text));
