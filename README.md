@@ -30,7 +30,7 @@ public function create(array $input)
 ```
 
 ## Create a secret
-Does not log any ip, user agent, etc. Content is encrypted (twice if passphrase is provided). Passphrase isi hashed as well.
+Does not log any ip, user agent, etc. Content is encrypted (twice if passphrase is provided). Passphrase is hashed as well.
 ```injectablephp
 public function create($content, $ttl, $random = 0, $passphrase = null, $recipient = null) {
     $password = $this->passphrase($random, $passphrase);
