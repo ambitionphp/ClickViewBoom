@@ -14,8 +14,7 @@ Below I will go over a few of the general functions to display what data (or lac
 ## Registration
 Simple registration only logs username and hashed password.
 ```injectablephp
-public function create(array $input)
-{
+public function create(array $input) {
     Validator::make($input, [
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => $this->passwordRules(),
@@ -61,26 +60,25 @@ public function create($content, $ttl, $random = 0, $passphrase = null, $recipie
 ## View secret
 Passphrase is confirmed if secret is protected by one. Content is decrypted and secret instantly deleted.
 ```injectablephp
-public function viewSecret()
-    {
-        if( $this->text->password ) {
-            $this->validate(['passphrase' => ['required']]);
-        }
-
-        if( ! $this->text->password || ( $this->text->password && Hash::check($this->passphrase, $this->text->password) ) ) {
-            try {
-                $this->decrypted = \Illuminate\Support\Facades\Crypt::decryptString($this->text->content);
-            } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
-                $this->decrypted = null;
-            }
-            if( $this->decrypted && $this->text->password ) {
-                $secretbox = new Secretbox;
-                $this->decrypted = $secretbox->decrypt($this->decrypted, $this->passphrase);
-            }
-            Text::find($this->text->id)->delete();
-            $this->visible = true;
-        }
+public function viewSecret() {
+    if( $this->text->password ) {
+        $this->validate(['passphrase' => ['required']]);
     }
+
+    if( ! $this->text->password || ( $this->text->password && Hash::check($this->passphrase, $this->text->password) ) ) {
+        try {
+            $this->decrypted = \Illuminate\Support\Facades\Crypt::decryptString($this->text->content);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            $this->decrypted = null;
+        }
+        if( $this->decrypted && $this->text->password ) {
+            $secretbox = new Secretbox;
+            $this->decrypted = $secretbox->decrypt($this->decrypted, $this->passphrase);
+        }
+        Text::find($this->text->id)->delete();
+        $this->visible = true;
+    }
+}
 ```
 
 ## Analytics
@@ -93,5 +91,14 @@ private function analaytics() {
 
     $record->increment($this->type);
     $record->increment('total');
+}
+```
+
+## Cleanup secrets
+In the even a secret is not viewed before it's expiration date and time it will be removed by the systems cronjob that runs every minute.
+```injectablephp
+public function handle() {
+    Text::whereDate('expires_at', '<=', now())->delete();
+    return 0;
 }
 ```
