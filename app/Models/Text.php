@@ -11,6 +11,8 @@ class Text extends Model
     use Snowflake;
     use HasFactory;
 
+    protected $keyType = 'string';
+
     protected $fillable = [
         'private_key',
         'user_id',

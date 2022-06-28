@@ -9,33 +9,44 @@ use Livewire\Component;
 
 class ViewText extends Component
 {
-    public $text;
+    private $text;
+    public $text_id;
     public $decrypted;
     public $visible = false;
     public $passphrase;
 
+    public function mount(Text $text)
+    {
+        $this->text = $text;
+        $this->text_id = (string) $text->id;
+    }
+
     public function render()
     {
-        return view('livewire.view-text');
+        return view('livewire.view-text', [
+            'text' => $this->text
+        ]);
     }
 
     public function viewSecret()
     {
-        if( $this->text->password ) {
+        $text = Text::find($this->text_id);
+        if( $text->password ) {
             $this->validate(['passphrase' => ['required']]);
         }
 
-        if( ! $this->text->password || ( $this->text->password && Hash::check($this->passphrase, $this->text->password) ) ) {
+        if( ! $text->password || ( $text->password && Hash::check($this->passphrase, $text->password) ) ) {
             try {
-                $this->decrypted = \Illuminate\Support\Facades\Crypt::decryptString($this->text->content);
+                $this->decrypted = \Illuminate\Support\Facades\Crypt::decryptString($text->content);
             } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
                 $this->decrypted = null;
             }
-            if( $this->decrypted && $this->text->password ) {
+
+            if( $this->decrypted && $text->password ) {
                 $secretbox = new Secretbox;
                 $this->decrypted = $secretbox->decrypt($this->decrypted, $this->passphrase);
             }
-            Text::find($this->text->id)->delete();
+            Text::find($text->id)->delete();
             $this->visible = true;
         }
     }
