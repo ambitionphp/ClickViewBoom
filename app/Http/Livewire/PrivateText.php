@@ -8,15 +8,19 @@ use Livewire\Component;
 
 class PrivateText extends Component
 {
-    public $text;
+    private $text;
+    public $text_id;
     public $decrypted = null;
     public $boom = 0;
     public $passphrase;
 
     public $generatedPassphrase;
 
-    public function mount()
+    public function mount(Text $text)
     {
+        $this->text = $text;
+        $this->text_id = (string) $text->id;
+
         $session = session()->pull('private_key');
         $passphrase = session()->pull('passphrase');
         if( $passphrase ) {
@@ -39,20 +43,25 @@ class PrivateText extends Component
 
     public function render()
     {
-        return view('livewire.private-text');
+        $text = Text::find($this->text_id);
+        return view('livewire.private-text', [
+            'text' => $text
+        ]);
     }
 
     public function boomText($confirm=null)
     {
+        $text = Text::find($this->text_id);
+
         if( 2 === intval($confirm) ) {
-            if( $this->text->password ) {
+            if( $text->password ) {
                 $this->validate([
                     'passphrase' => ['required']
                 ]);
             }
-            if( !$this->text->password || Hash::check($this->passphrase, $this->text->password) ) {
-                Text::find($this->text->id)->delete();
-                return redirect()->to(route('text.private', $this->text));
+            if( !$text->password || Hash::check($this->passphrase, $text->password) ) {
+                Text::find($text->id)->delete();
+                return redirect()->to(route('text.private', $text));
             }
         }
         $this->boom = $confirm;
