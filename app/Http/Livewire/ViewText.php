@@ -35,7 +35,7 @@ class ViewText extends Component
             $this->validate(['passphrase' => ['required']]);
         }
 
-        if( ! $text->password || ( $text->password && Hash::check($this->passphrase, $text->password) ) ) {
+        if( ! $text->password || Hash::check($this->passphrase, $text->password) ) {
             try {
                 $this->decrypted = \Illuminate\Support\Facades\Crypt::decryptString($text->content);
             } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {

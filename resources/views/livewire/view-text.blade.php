@@ -2,7 +2,7 @@
     <div class="pb-3">
         @if( ! $visible )
         <form wire:submit.prevent="viewSecret">
-            @if( $text->password )
+            @if( $text && $text->password )
                 <h2 class="font-semibold text-gray-600 text-xl leading-tight mb-1">This message requires a passphrase:</h2>
                 <div class="mt-1 mb-2">
                     <input
