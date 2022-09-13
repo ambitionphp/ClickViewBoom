@@ -23,8 +23,9 @@ class ViewText extends Component
 
     public function render()
     {
+
         return view('livewire.view-text', [
-            'text' => $this->text
+            'text' => Text::find($this->text_id)
         ]);
     }
 
@@ -48,6 +49,9 @@ class ViewText extends Component
             }
             Text::find($text->id)->delete();
             $this->visible = true;
+        }
+        else {
+            $this->addError('password', 'Invalid password provided.');
         }
     }
 }

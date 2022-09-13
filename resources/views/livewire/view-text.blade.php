@@ -18,7 +18,12 @@
                                     font-normal
                                     text-gray-400
                                     bg-gray-50 bg-clip-padding
-                                    border border-solid border-gray-300
+                                    border border-solid
+                                    @error('password')
+                                    border-red-600
+                                    @else
+                                    border-gray-300
+                                    @enderror
                                     rounded
                                     transition
                                     ease-in-out
@@ -28,6 +33,7 @@
                                   "
                         placeholder="Enter passphrase"
                     />
+                    @error('password') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                 </div>
             @else
                 <h2 class="font-semibold text-gray-600 text-xl leading-tight mb-1">Click to continue:</h2>
