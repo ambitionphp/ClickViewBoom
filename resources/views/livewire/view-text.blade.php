@@ -9,28 +9,28 @@
                         wire:model.defer="passphrase"
                         type="password"
                         class="
-                                    form-control
-                                    block
-                                    w-full
-                                    px-3
-                                    py-1.5
-                                    text-base
-                                    font-normal
-                                    text-gray-400
-                                    bg-gray-50 bg-clip-padding
-                                    border border-solid
-                                    @error('password')
-                                    border-red-600
-                                    @else
-                                    border-gray-300
-                                    @enderror
-                                    rounded
-                                    transition
-                                    ease-in-out
-                                    m-0
-                                    placeholder:text-gray-400
-                                    focus:text-gray-600 focus:bg-white focus:border-gray-800 focus:outline-none
-                                  "
+                                form-control
+                                block
+                                w-full
+                                px-3
+                                py-1.5
+                                text-base
+                                font-normal
+                                text-gray-400
+                                bg-gray-50 bg-clip-padding
+                                border border-solid
+                                @error('password')
+                                border-red-600
+                                @else
+                                border-gray-300
+                                @enderror
+                                rounded
+                                transition
+                                ease-in-out
+                                m-0
+                                placeholder:text-gray-400
+                                focus:text-gray-600 focus:bg-white focus:border-gray-800 focus:outline-none
+                              "
                         placeholder="Enter passphrase"
                     />
                     @error('password') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
