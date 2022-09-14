@@ -10,7 +10,7 @@
         </x-slot>
 
         <div>
-            <p><strong>{{ $client->name }}</strong> is requesting permission to access your account.</p>
+            <p class="text-center mb-5"><strong>{{ $client->name }}</strong> is requesting permission to access your account.</p>
 
             <!-- Scope List -->
             @if (count($scopes) > 0)
