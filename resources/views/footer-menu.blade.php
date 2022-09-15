@@ -7,8 +7,6 @@
         <span class="px-1 text-gray-500">|</span>
         <a href="{{ route('stats') }}">Stats</a>
         <span class="px-1 text-gray-500">|</span>
-        <!--<a href="{{ route('docs.api') }}">API</a>
-        <span class="px-1 text-gray-500">|</span>-->
         <a href="https://github.com/ambitionphp/ClickViewBoom" target="_blank">Code</a>
         <span class="px-1 text-gray-500">|</span>
         <a href="https://github.com/ambitionphp/ClickViewBoom/issues" target="_blank">Issues</a>
