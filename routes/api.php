@@ -14,7 +14,7 @@ use App\Http\Controllers;
 |
 */
 
-Route::prefix('v1')->middleware(['auth:api', 'ability:read', 'json.response'])->group(function() {
+Route::prefix('v1')->middleware(['auth:api', 'json.response'])->group(function() {
     Route::get('/user', [Controllers\ApiController::class, 'user']);
     Route::get('/recent', [Controllers\ApiController::class, 'recent']);
     Route::post('/secret', [Controllers\ApiController::class, 'secret']);
