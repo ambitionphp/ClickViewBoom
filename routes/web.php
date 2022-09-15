@@ -84,6 +84,7 @@ Route::get('/contributors', function() {
     return redirect()->route('sponsors');
 })->name('contributors');
 
+/*
 Route::get('/docs/api', function() {
     SEOTools::setTitle('API Docs');
     return view('api.docs.overview');
@@ -98,6 +99,7 @@ Route::get('/docs/api/postman', function() {
     SEOTools::setTitle('Run in Postman');
     return view('api.docs.postman');
 })->name('docs.api.postman');
+*/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/recent', function () {
     SEOTools::setTitle('Recent secrets');
