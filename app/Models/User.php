@@ -14,11 +14,11 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use Snowflake;
-    use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
