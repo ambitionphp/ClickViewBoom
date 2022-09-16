@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Encryption\Encrypter;
+use Martbock\Diceware\Facades\Diceware;
 
 class Secret {
 
@@ -74,7 +75,8 @@ class Secret {
 
     private function passphrase($random, $passphrase) {
         if( $random ) {
-            $passphrase = Str::random(10);
+            //$passphrase = Str::random(10);
+            $passphrase = Diceware::generate();
             session(['passphrase'=>$passphrase]);
         }
         return [

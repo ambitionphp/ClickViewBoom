@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e78754b71a677b8e02b4c7ac69883bd",
+    "content-hash": "4814e3fa31299509c57055b7974a325b",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -3281,6 +3281,71 @@
                 }
             ],
             "time": "2022-08-08T13:52:53+00:00"
+        },
+        {
+            "name": "martbock/laravel-diceware",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/martbock/laravel-diceware.git",
+                "reference": "51355efcd6d662eade95ea66cfd465c5d671c725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/martbock/laravel-diceware/zipball/51355efcd6d662eade95ea66cfd465c5d671c725",
+                "reference": "51355efcd6d662eade95ea66cfd465c5d671c725",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^8.0|^9.0",
+                "orchestra/testbench": "6.*|7.*",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Martbock\\Diceware\\DicewareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Diceware": "Martbock\\Diceware\\Facades\\Diceware"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Martbock\\Diceware\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Bock",
+                    "email": "opensource@martin-bock.com",
+                    "homepage": "https://martin-bock.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Diceware Passphrase Generator for Laravel",
+            "homepage": "https://github.com/martbock/laravel-diceware",
+            "keywords": [
+                "diceware",
+                "generator",
+                "laravel",
+                "passphrase",
+                "password"
+            ],
+            "support": {
+                "issues": "https://github.com/martbock/laravel-diceware/issues",
+                "source": "https://github.com/martbock/laravel-diceware/tree/v2.0.0"
+            },
+            "time": "2022-02-09T21:07:30+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
