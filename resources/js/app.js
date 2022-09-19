@@ -13,6 +13,8 @@ autosize(document.querySelectorAll('textarea'));
 
 new ClipboardJS('.copy-paste');
 
+
+
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
         navigator.serviceWorker

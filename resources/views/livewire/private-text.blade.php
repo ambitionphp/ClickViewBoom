@@ -6,28 +6,27 @@
                 <input
                     type="url"
                     class="
-                                    form-control
-                                    block
-                                    w-full
-                                    px-3
-                                    py-1.5
-                                    text-base
-                                    font-normal
-                                    text-gray-600
-                                    bg-yellow-200 bg-clip-padding
-                                    border border-solid border-yellow-400
-                                    rounded
-                                    transition
-                                    ease-in-out
-                                    m-0
-                                    placeholder:text-gray-400
-                                    focus:text-gray-600 focus:border-yellow-500 focus:outline-none
-                                    copy-paste
-                                  "
+                        form-control
+                        block
+                        w-full
+                        px-3
+                        py-1.5
+                        text-base
+                        font-normal
+                        text-gray-600
+                        bg-yellow-200 bg-clip-padding
+                        border border-solid border-yellow-400
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0
+                        placeholder:text-gray-400
+                        focus:text-gray-600 focus:border-yellow-500 focus:outline-none
+                        copy-paste
+                      "
                     value="{{ route('text.secret', $text) }}"
-                    data-clipboard-text="{{ route('text.secret', $text) }}"
-                    onfocus="this.select();"
-                    onmouseup="return false;"
+                    data-clipboard-target="#secretShareUrl"
+                    id="secretShareUrl"
                     readonly
                     autofocus
                 />
@@ -40,30 +39,29 @@
                         <span class="font-semibold">Passphrase:</span>
                     </div>
                     <input
-                        type="url"
+                        type="text"
                         class="
-                                    form-control
-                                    block
-                                    w-full
-                                    px-3
-                                    py-1.5
-                                    text-base
-                                    font-normal
-                                    text-gray-600
-                                    bg-yellow-200 bg-clip-padding
-                                    border border-solid border-yellow-400
-                                    rounded
-                                    transition
-                                    ease-in-out
-                                    m-0
-                                    placeholder:text-gray-400
-                                    focus:text-gray-600 focus:border-yellow-500 focus:outline-none
-                                    copy-paste
-                                  "
+                            form-control
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-600
+                            bg-yellow-200 bg-clip-padding
+                            border border-solid border-yellow-400
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            placeholder:text-gray-400
+                            focus:text-gray-600 focus:border-yellow-500 focus:outline-none
+                            copy-paste
+                          "
                         value="{{ $generatedPassphrase }}"
-                        data-clipboard-text="{{ $generatedPassphrase }}"
-                        onfocus="this.select();"
-                        onmouseup="return false;"
+                        data-clipboard-target="#generatedPassphrase"
+                        id="generatedPassphrase"
                         readonly
                     />
                     @endif

@@ -46,7 +46,14 @@
                         Total Secrets
                     </span>
                 </div>
+                <div class="col-span-2 md:col-span-4 pt-2">
+                    {!! $chart->container() !!}
+                </div>
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+        {!! $chart->script() !!}
+    @endpush
 </x-app-layout>

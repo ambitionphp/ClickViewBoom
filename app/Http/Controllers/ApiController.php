@@ -4,16 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Secret;
 use App\Helpers\Secretbox;
-use App\Jobs\BoomText;
-use App\Mail\SecretReceived;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Text;
-use Illuminate\Support\Str;
 
 class ApiController extends Controller
 {

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Artesaos\SEOTools\Facades\SEOTools;
+use App\Http\Controllers\SecretController;
+use App\Http\Controllers\StatsController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,46 +22,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/private/{text:private_key}', function(\App\Models\Text $text) {
-    if( $text->expires_at->lessThanOrEqualTo(\Carbon\Carbon::now()) ) {
-        $text->delete();
-        SEOTools::setTitle('No such text');
-        return response()->view('text.unknown');
-    }
-    SEOTools::setTitle('You saved a text');
-    return view('text.private', [
-        'text' => $text
-    ]);
-})->name('text.private')->missing(function (\Illuminate\Http\Request $request) {
+Route::get('/private/{text:private_key}', [SecretController::class, 'private'])->name('text.private')->missing(function (Request $request) {
     SEOTools::setTitle('No such text');
     return response()->view('text.unknown');
 });
 
-Route::get('/secret/{text}', function(\App\Models\Text $text) {
-    if( $text->expires_at->lessThanOrEqualTo(\Carbon\Carbon::now()) ) {
-        $text->delete();
-        SEOTools::setTitle('No such text');
-        return response()->view('text.unknown');
-    }
-    SEOTools::setTitle('You received a text');
-    return view('text.secret', [
-        'text' => $text
-    ]);
-})->name('text.secret')->missing(function (\Illuminate\Http\Request $request) {
+Route::get('/secret/{text}', [SecretController::class, 'secret'])->name('text.secret')->missing(function (Request $request) {
     SEOTools::setTitle('No such text');
     return response()->view('text.unknown');
 });
 
-Route::get('/stats', function() {
-    SEOTools::setTitle('Stats');
-    $stats = \App\Models\Analaytic::get();
-    return view('stats', [
-        'users' => \App\Models\User::count(),
-        'api' => $stats->sum('api'),
-        'web' => $stats->sum('web'),
-        'total' => $stats->sum('total')
-    ]);
-})->name('stats');
+Route::get('/stats', [StatsController::class, 'view'])->name('stats');
 
 Route::get('/about', function() {
     SEOTools::setTitle('About');
